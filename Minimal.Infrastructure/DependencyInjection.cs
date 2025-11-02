@@ -39,7 +39,7 @@ public static class DependencyInjection
 
             options.UseNpgsql(connection, options =>
             {
-                options.MigrationsAssembly("Vocabu.Infrastructure");
+                options.MigrationsAssembly("Minimal.Infrastructure");
                 options.EnableRetryOnFailure();
             });
         }, ServiceLifetime.Scoped);
