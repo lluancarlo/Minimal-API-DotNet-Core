@@ -1,6 +1,6 @@
-﻿using Minimal.Application.Common.Results;
+﻿using Minimal.Application.Shared.Results;
 
-namespace Minimal.Application.Common.Interfaces;
+namespace Minimal.Application.Abstraction;
 
 public interface IJwtService
 {

@@ -24,13 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Minimal.Application\Minimal.Application.csproj" />
     <ProjectReference Include="..\Minimal.Infrastructure\Minimal.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Middleware\" />
-    <Folder Include="Filters\" />
   </ItemGroup>
 
 </Project>

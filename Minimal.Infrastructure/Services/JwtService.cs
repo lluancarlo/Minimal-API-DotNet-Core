@@ -3,8 +3,8 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Minimal.Application.Common.Interfaces;
-using Minimal.Application.Common.Results;
+using Minimal.Application.Abstraction;
+using Minimal.Application.Shared.Results;
 
 namespace Minimal.Infrastructure.Services;
 

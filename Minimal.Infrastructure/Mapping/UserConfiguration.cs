@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Minimal.DAL.Entities;
+using Minimal.Domain.User;
 
-namespace Minimal.Infrastructure.Persistence.Configuration;
+namespace Minimal.Infrastructure.Mapping;
 
 public class UserConfiguration : IEntityTypeConfiguration<User>
 {

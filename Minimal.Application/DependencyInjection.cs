@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Minimal.Application.Common.Behaviors;
+using Minimal.Application.Shared.Behaviors;
 
 namespace Minimal.Application;
 

@@ -60,3 +60,22 @@ Notes:
 ## How to run locally
 
 1. Restore & build
+
+## How to run migrations
+- ## dotnet ef
+    run all the commands from the solution folder
+    ```bash
+    dotnet ef Migrations Add InitialMigration -p Minimal.Infrastructure -s Minimal.Infrastructure -c MinimalApiDbContext
+    ```
+    ```bash
+    dotnet ef Migrations Remove -p Minimal.Infrastructure -s Minimal.Infrastructure -c MinimalApiDbContext
+    ```
+
+- ## dotnet database
+    run all the commands from the solution folder
+    ```bash
+    dotnet ef database update -p Minimal.Infrastructure -s Minimal.Infrastructure -c MinimalApiDbContext
+    ```
+    ```bash
+    dotnet ef database update 0 -p Minimal.Infrastructure -s Minimal.Infrastructure -c MinimalApiDbContext
+    ```

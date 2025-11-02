@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Minimal.Application.Common.Results;
+using Minimal.Application.Shared.Results;
 
 namespace Minimal.Application.Auth.SignIn;
 

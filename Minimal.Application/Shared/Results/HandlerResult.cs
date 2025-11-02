@@ -1,4 +1,4 @@
-﻿namespace Minimal.Application.Common.Results;
+﻿namespace Minimal.Application.Shared.Results;
 
 /// <summary>
 /// Represents the result of a business operation.

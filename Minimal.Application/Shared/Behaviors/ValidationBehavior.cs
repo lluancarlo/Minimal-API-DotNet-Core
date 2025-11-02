@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 
-namespace Minimal.Application.Common.Behaviors;
+namespace Minimal.Application.Shared.Behaviors;
 
 /// <summary>
 /// Pipeline behavior that intercepts ALL MediatR requests

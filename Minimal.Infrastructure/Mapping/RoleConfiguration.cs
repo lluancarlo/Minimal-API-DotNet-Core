@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Minimal.Infrastructure.Persistence.Configuration;
+namespace Minimal.Infrastructure.Mapping;
 
-public class UserClaimConfiguration : IEntityTypeConfiguration<IdentityUserClaim<Guid>>
+public class RoleConfiguration : IEntityTypeConfiguration<IdentityRole<Guid>>
 {
-    public void Configure(EntityTypeBuilder<IdentityUserClaim<Guid>> builder)
+    public void Configure(EntityTypeBuilder<IdentityRole<Guid>> builder)
     {
-        builder.ToTable("UserClaims");
+        builder.ToTable("Roles");
 
         // PrimaryKey
         builder.HasKey(p => p.Id);

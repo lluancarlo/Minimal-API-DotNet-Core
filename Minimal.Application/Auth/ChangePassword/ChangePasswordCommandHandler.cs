@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Minimal.Application.Common.Results;
-using Minimal.DAL.Entities;
+using Minimal.Application.Shared.Results;
+using Minimal.Domain.User;
 
 namespace Minimal.Application.Auth.ChangePassword;
 

@@ -1,4 +1,4 @@
-﻿namespace Minimal.Application.Common.Results;
+﻿namespace Minimal.Application.Shared.Results;
 
 public class ServiceResult<T>
 {

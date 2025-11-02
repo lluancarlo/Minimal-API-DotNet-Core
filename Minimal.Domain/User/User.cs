@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Minimal.DAL.Entities;
+namespace Minimal.Domain.User;
 
 public class User : IdentityUser<Guid>
 {

@@ -2,11 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Minimal.Application.Common.Interfaces;
-using Minimal.DAL.Entities;
-using Minimal.Domain.Interfaces;
+using Minimal.Application.Abstraction;
+using Minimal.Domain.User;
 using Minimal.Infrastructure.Persistence;
-using Minimal.Infrastructure.Persistence.Configuration.Repositories;
 using Minimal.Infrastructure.Services;
 
 namespace Minimal.Infrastructure;
@@ -15,11 +13,24 @@ public static class DependencyInjection
 {
     public const string DefaultConnection = nameof(DefaultConnection);
 
-    public static IServiceCollection AddInfrastructure<TContext>(
+    public static IServiceCollection AddInfrastructure(
         this IServiceCollection services,
-        IConfiguration configuration) where TContext : DbContext
+        IConfiguration configuration)
     {
-        // Database
+        services.AddDatabase<MinimalApiDbContext>(configuration);
+        services.AddIdentity();
+
+        services.AddScoped<IJwtService, JwtService>();
+
+        return services;
+    }
+
+    private class ConnectionStringException : Exception { }
+
+
+    private static void AddDatabase<TContext>(this IServiceCollection services, IConfiguration configuration)
+        where TContext : DbContext
+    {
         services.AddDbContext<TContext>(options =>
         {
             var connection = configuration.GetConnectionString(DefaultConnection);
@@ -28,33 +39,28 @@ public static class DependencyInjection
 
             options.UseNpgsql(connection, options =>
             {
-                options.MigrationsAssembly("Minimal.DAL");
+                options.MigrationsAssembly("Vocabu.Infrastructure");
                 options.EnableRetryOnFailure();
             });
-        });
+        }, ServiceLifetime.Scoped);
 
-        // Identity
+        // Register repositories here
+        //services.AddScoped<IMyRepository, MyRepository>();
+    }
+
+    private static void AddIdentity(this IServiceCollection services)
+    {
         services.AddIdentity<User, IdentityRole<Guid>>(options =>
         {
-            options.Password.RequireDigit = true;
-            options.Password.RequireLowercase = true;
-            options.Password.RequireUppercase = true;
-            options.Password.RequireNonAlphanumeric = true;
-            options.Password.RequiredLength = 8;
+            options.Password.RequireDigit = false;
+            options.Password.RequireLowercase = false;
+            options.Password.RequireUppercase = false;
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequiredLength = 5;
 
             options.User.RequireUniqueEmail = true;
             options.SignIn.RequireConfirmedEmail = false;
         }).AddEntityFrameworkStores<MinimalApiDbContext>()
         .AddDefaultTokenProviders();
-
-        // Repositories
-        services.AddScoped(typeof(IRepository<>), typeof(ApiRepository<>));
-
-        // Services
-        services.AddScoped<IJwtService, JwtService>();
-
-        return services;
     }
-
-    private class ConnectionStringException : Exception { }
 }

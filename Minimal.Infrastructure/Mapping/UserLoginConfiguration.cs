@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Minimal.Infrastructure.Persistence.Configuration;
+namespace Minimal.Infrastructure.Mapping;
 
 public class UserLoginConfiguration : IEntityTypeConfiguration<IdentityUserLogin<Guid>>
 {

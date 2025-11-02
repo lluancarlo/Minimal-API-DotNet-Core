@@ -8,12 +8,11 @@ using System.Reflection;
 using Minimal.API.Endpoints;
 using Minimal.Application;
 using Minimal.Infrastructure;
-using Minimal.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplication();
-builder.Services.AddInfrastructure<MinimalApiDbContext>(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
 
 // Configure services
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
